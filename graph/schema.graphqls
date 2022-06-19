@@ -1,0 +1,46 @@
+type Employees {
+  empId: String!
+  title: String!
+  firstname: String!
+  lastname: String!
+  address: String!
+}
+
+input EmployeeGetterRequest {
+  empId: String
+  title: String
+}
+
+input EmployeeRequest{
+  empId: String
+  firstname: String!
+  lastname: String!
+  title: String!
+  address: String!
+}
+
+type Selection {
+  empId: String!
+  title: String!
+}
+
+
+type response {
+  error: Boolean!
+  message: String!
+}
+
+type EmployeeGetterResponse {
+  error: Boolean!
+  message: String!
+  employeeGet: [Employees!]!
+}
+
+
+type Query {
+  employeeDbGet(input: EmployeeGetterRequest!) : EmployeeGetterResponse!
+}
+
+type Mutation {
+  upsertEmployee(input: EmployeeRequest!): response!
+}
